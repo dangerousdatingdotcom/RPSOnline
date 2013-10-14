@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="stylesheets/gogogo.css" rel=stylesheet type="text/css">
+		<script type="text/javascript" src="javascripts/gogogo.js"></script>
+	</head>
+	<body>
+		<div id="world">
+			<div class="box" id="userBox"><img src="wat2.png"></div>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		Game.initialize();
+		Game.run();
+		setInterval(Game.run, 1000/FPS);
+	</script>
+</html>

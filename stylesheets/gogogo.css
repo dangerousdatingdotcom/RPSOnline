@@ -1,0 +1,15 @@
+.box {
+	width: 64px;
+	height: 64px;
+	/*background-color: #000000;*/
+	position: absolute;
+	z-index: 1;
+}
+
+body {
+	overflow: hidden;
+}
+
+.platform {
+	z-index: -1;
+}
