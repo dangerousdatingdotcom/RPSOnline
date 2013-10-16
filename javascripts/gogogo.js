@@ -569,15 +569,15 @@ Game.draw = function() {
 
 	var posx = 0;
 	var posy = 0;
-	if (!e) var e = window.event;
-	if (e.pageX || e.pageY) {
-		posx = e.pageX;
-		posy = e.pageY;
+	var event = window.event;
+	if (event.pageX || event.pageY) {
+		posx = event.pageX;
+		posy = event.pageY;
 	}
-	else if (e.clientX || e.clientY) {
-		posx = e.clientX + document.body.scrollLeft
+	else if (event.clientX || event.clientY) {
+		posx = event.clientX + document.body.scrollLeft
 			+ document.documentElement.scrollLeft;
-		posy = e.clientY + document.body.scrollTop
+		posy = event.clientY + document.body.scrollTop
 			+ document.documentElement.scrollTop;
 	}
 	
