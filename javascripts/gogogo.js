@@ -567,19 +567,7 @@ Game.draw = function() {
 	document.getElementById('userBox').style.left = griffin.position.left+"px";
 	document.getElementById('userBox').style.top = griffin.position.top+"px";
 
-	var posx = 0;
-	var posy = 0;
-	var event = window.event;
-	if (event.pageX || event.pageY) {
-		posx = event.pageX;
-		posy = event.pageY;
-	}
-	else if (event.clientX || event.clientY) {
-		posx = event.clientX + document.body.scrollLeft
-			+ document.documentElement.scrollLeft;
-		posy = event.clientY + document.body.scrollTop
-			+ document.documentElement.scrollTop;
-	}
+	
 	
 	if(document.getElementById('reticle')){
 		var e = document.getElementById('div');
