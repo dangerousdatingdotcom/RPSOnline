@@ -197,7 +197,7 @@ var constructors = {
 		this.acceleration = acceleration || {left:0,top:0};
 		this.bounds = { 
 			height: 4,
-			width: 12
+			width: 4
 		};
 		this.STATE = "NEW";
 	},
@@ -281,16 +281,17 @@ Game.initialize = function(){
 	    	directionals.right = true;
 	    if(event.keyCode == 40) //down
 	    	directionals.down = true;
-	    if(event.keyCode == 90)
+	    if(event.keyCode == 90) //z
 	    	directionals.jump = true;
-	    if(event.keyCode == 88)
+	    if(event.keyCode == 88) //x
 	    	directionals.shoot = true;
-	    if(event.keyCode == 68)
+	    if(event.keyCode == 68) //d
 	    	debug = !debug;
 	    if(debug){
 	    	//console.log("Key Press: "+event.keyCode);
 	    }
 	};
+	
 	document.onkeyup = function(event) {
 		event = event || window.event;
 	    if(event.keyCode == 37) //left
@@ -301,13 +302,15 @@ Game.initialize = function(){
 	    	directionals.right = false;
 	    if(event.keyCode == 40) //down
 	    	directionals.down = false;
-	    if(event.keyCode == 90)
+	    if(event.keyCode == 90) //z
 	    	directionals.jump = false;
-	    if(event.keyCode == 88)
+	    if(event.keyCode == 88) //x
 	    	directionals.shoot = false;
 	    // if(event.keyCode == 90)
 	    // 	directionals.jump = false;
 	};
+	
+	//document.onclick
 }
 
 Game.run = function() {
@@ -421,6 +424,8 @@ Game.update = function() {
 		//platforms[k].position.top = window.innerHeight - platforms[k].position.fromBottom;
 		//platforms[k].bounds.height = window.innerHeight - platforms[k].position.top;
 	}
+	
+	
 
 	if(directionals.shoot){
 		if(xcontainsy(griffin.STATE, "LEFT")){
@@ -562,6 +567,38 @@ Game.draw = function() {
 	document.getElementById('userBox').style.left = griffin.position.left+"px";
 	document.getElementById('userBox').style.top = griffin.position.top+"px";
 
+	var posx = 0;
+	var posy = 0;
+	if (!e) var e = window.event;
+	if (e.pageX || e.pageY) {
+		posx = e.pageX;
+		posy = e.pageY;
+	}
+	else if (e.clientX || e.clientY) {
+		posx = e.clientX + document.body.scrollLeft
+			+ document.documentElement.scrollLeft;
+		posy = e.clientY + document.body.scrollTop
+			+ document.documentElement.scrollTop;
+	}
+	
+	if(document.getElementById('reticle')){
+		var e = document.getElementById('div');
+		e.style.position = "fixed";
+		e.style.top = posy;
+		e.style.left = posx;
+		e.style.height = "4px";
+		e.style.width = "4px";
+		e.style.backgroundColor = "rgb(255,255,255)";
+	} else {
+		var e = document.createElement('div');
+		e.style.position = "fixed";
+		e.style.top = posy;
+		e.style.left = posx;
+		e.style.height = "4px";
+		e.style.width = "4px";
+		e.style.backgroundColor = "rgb(255,255,255)";
+	}
+	
 	for(var k in griffin.bullets)
 	{
 		if(document.getElementById(k)){
