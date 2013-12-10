@@ -569,7 +569,7 @@ Game.draw = function() {
 
 	
 	
-	if(document.getElementById('reticle')){
+	/*if(document.getElementById('reticle')){
 		var e = document.getElementById('div');
 		e.style.position = "fixed";
 		e.style.top = posy;
@@ -585,7 +585,7 @@ Game.draw = function() {
 		e.style.height = "4px";
 		e.style.width = "4px";
 		e.style.backgroundColor = "rgb(255,255,255)";
-	}
+	}*/
 	
 	for(var k in griffin.bullets)
 	{
